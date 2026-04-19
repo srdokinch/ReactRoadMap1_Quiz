@@ -1,5 +1,26 @@
+import Display from '../components/Display/Display'
+import quizData from '../data/quiz'
+import Button from '../components/Button/Button'
+
 export default function QuizPage() {
+    const quizIndex = 0
+    const handleClick = (clickedIndex) => {
+      console.log("clickedIndex", clickedIndex)
+    }
   return (
-    <div>QuizPage</div>
+    <>
+      <Display>
+        {`Q1. ${quizData[0].question}`}
+      </Display>
+      {
+        quizData[quizIndex].options.map((option, index) => {
+          return (
+            <Button key={`option-${index}`} onClick={() => handleClick(index)}>
+              { option }
+            </Button>
+          )
+        })
+      }
+    </>
   )
 }
